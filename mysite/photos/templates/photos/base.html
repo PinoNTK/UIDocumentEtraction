@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+  .highlight{
+    color: red;
+    background-color: yellow;
+  }
+</style>
+<h2 class="page-header">
+  Upload files
+  <!-- <small>/ {% block title %}{% endblock %}</small> -->
+</h2>
+<div class="row">
+  <div class="col-md-6">
+    <form method="post" action="{% url 'photos:clear_database' %}">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button type="submit" class="btn btn-danger pull-right">
+        <span class="glyphicon glyphicon-trash"></span> Clear Database
+      </button>
+    </form>
+    {% block photos_content %}
+    {% endblock %}
+<table class="table table-striped table-bordered table-hover table-condensed" id="myTable">
+    <thead>
+      <tr>
+          <th scope="col">Key</th>
+          <th scope="col">Occurrence(s)</th>
+          <th scope="col">Sentence</th>
+          <th scope="col">Positive</th>
+          <th scope="col">Negative</th>
+          <th scope="col">Money</th>
+          <th scope="col">Past</th>
+          <th scope="col">Present</th>
+          <th scope="col">Future</th>
+          <th scope="col">Image link</th>
+          <th scope="col">Number of tables</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  </div>
+  <div class="col-md-6" style="">
+    <blockquote id="documemtContent"></blockquote>
+    </div>
+    
+  </div>
+  {% endblock %}
